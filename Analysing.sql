@@ -1,5 +1,5 @@
---1.My first step was to check the average Debt Ratio, that provides an indication of the proportion of financing through debt relative to total investments.
---The columns have INTEGER data type, so I had to CAST to FLOAT, in order to perform a division.
+--1.My first step was to examine the average Debt Ratio, which indicates the proportion of financing through debt relative to total investments.
+--The columns are of INTEGER data type, so I needed to CAST them to FLOAT in order to perform the division.
 
 SELECT 
 AVG(debito_2013/investimenti_2013) AS avg_raporto_indebitamento_2013,
@@ -22,14 +22,12 @@ FROM
 FROM
   tst)
 
-----Debt Ratio 2013 _ 0.67
-----Debt Ratio 2014 _ 0.67
-----Debt Ratio 2015 _ 0.95 
-----A Debt Ratio higher than 1.0 indicates the companu has more dept than investments, while a Debt Ratio lower then 1.0, indicates that the company has more investments.
-----2015 was the worse.
+--Debt Ratio 2013 _ 0.67
+--Debt Ratio 2014 _ 0.67
+--Debt Ratio 2015 _ 0.95 
+--A Debt Ratio higher than 1.0 indicates the companu has more dept than investments, while a Debt Ratio lower then 1.0, indicates that the company has more investments.
 
---2.Next step is to check Debt-to-Equity Ratio, which measures the level of debt relative to equity and provides an idea of how much the company relies on debt to finance its operations.
-
+--2.The next step was to examine the Debt-to-Equity Ratio, which measures the level of debt relative to equity and offers insight into the extent to which the company relies on debt to finance its operations.
   SELECT 
 AVG(debito_2013/netto_2013) AS avg_raporto_debito_netto_2013,
 AVG(debito_2013/netto_2014) AS avg_raporto_debito_netto_2014,
@@ -51,12 +49,11 @@ FROM
 FROM
   tst)
 
-----Debt-to-Equity Ratio 2013 _ 5.47
-----Debt-to-Equity Ratio 2014 _ 11.55
-----Debt-to-Equity Ratio 2015 _ 4.12
-----2014 was the worse.
+--Average Debt-to-Equity Ratio 2013 _ 5.47
+--Average Debt-to-Equity Ratio 2014 _ 11.55
+--Average Debt-to-Equity Ratio 2015 _ 4.12
 
---3.Now we have a look at Return on Investment (ROI), which indicates the percentage return on capital invested, useful for evaluating the productivity of investments.
+--3.Next, I examined the Return on Investment (ROI), which indicates the percentage return on invested capital, serving as a useful measure for assessing the productivity of investments."
 
   SELECT 
 AVG((utile_2013/investimenti_2013))*100 AS avg_rendimento_degli_investimenti_2013,
@@ -79,14 +76,12 @@ FROM
 FROM
   tst)
 
-----ROI 2013 _ 0.03%
-----ROI 2014 _ -1.65%
-----ROI 2015 _ -9.95%
-----2015 is the worse.
+--ROI 2013 _ 0.03%
+--ROI 2014 _ -1.65%
+--ROI 2015 _ -9.95%
 
---4.After I checked the general profitability, for each year.
---My first step was having a look at the EBITDA (MOL) average.
---This indicator shows the company's operating profitability, excluding depreciation and amortization expenses.
+--4. I then proceeded to assess the overall profitability for each year, starting with an analysis of the average EBITDA (MOL).
+--This indicator reflects the company's operating profitability, excluding depreciation and amortization expenses."
 
 SELECT
  AVG("Mol
@@ -98,12 +93,12 @@ AVG("Mol
 FROM 
   tst
 
-----Average EBITDA 2013 _ €202.250,97
-----Average EBITDA 2014 _ €212.409,49	
-----Average EBITDA 2015 _ €181.816,14
+--Average EBITDA 2013 _ €202.250,97
+--Average EBITDA 2014 _ €212.409,49	
+--Average EBITDA 2015 _ €181.816,14
 
---5.Then I compared the average of the Return on Equity (ROE) for each year.
---This indicator measures the profit generated for each unit of equity, useful for investors.
+--5. I then compared the average Return on Equity (ROE) for each year.
+--This indicator measures the profit generated for each unit of equity, providing valuable insight for investors."
 
 SELECT 
   AVG(roe_2013) AS avg_roe_2013,
@@ -131,11 +126,11 @@ FROM
 FROM
   tst))
 
-----Average ROE 2013 _ 1.73%
-----Average ROE 2014 _ -8.80%
-----Average ROE 2015 _ 12.60%
+--Average ROE 2013 _ 1.73%
+--Average ROE 2014 _ -8.80%
+--Average ROE 2015 _ 12.60%
 
---6.The numbers are low, so I checked the minimum and maximum for the valued Utile(Net Income) and Netto(Equity).
+--6. The numbers were low, so I examined the minimum and maximum values for Utile (Net Income) and Netto (Equity).
 
 SELECT
   MIN("Utile
@@ -169,61 +164,66 @@ SELECT
 FROM
   tst
 
-----A lot of negative values were returned, which explains the low ROE.
+--Many negative values were returned, which explains the low ROE.
 
---7.Then I moved on to check the Operational Efficiency, for each year.
---Starting wirh Revenue per Employee, which measures how efficient the company is in using its resources, especially concerning employees.
-
-SELECT 
-  AVG(ricavi_per_dipendenti_2013) AS avg_ricavi_per_dipendenti_2013,
-  AVG(ricavi_per_dipendenti_2014) AS avg_ricavi_per_dipendenti_2014,
-  AVG(ricavi_per_dipendenti_2015) AS avg_ricavi_per_dipendenti_2015
-FROM
-(SELECT 
- ("Ricavi
-2013" /"Dipendenti
-2013") AS ricavi_per_dipendenti_2013,
- ("Ricavi
-2014" /"Dipendenti
-2014") AS ricavi_per_dipendenti_2014,
- ("Ricavi
-2015" /"Dipendenti
-2015") AS ricavi_per_dipendenti_2015
-FROM 
-  tst)
-
-----Average Revenue per Employee 2013 _ €311.256,77
-----Average Revenue per Employee 2014 _ €316.006,33
-----Average Revenue per Employee 2015 _ €288.586,60
-----This time the numbers don't look bad.
-
---8.The numbers before were not bad, so I decided to check the average Labor Cost per Employee.
----That indicates the average cost per employee; helping to understand how “expensive” the workforce is for the company.
+--7. I then proceeded to assess Operational Efficiency for each year, beginning with Revenue per Employee.
+--This metric measures how efficiently the company utilizes its resources, particularly in relation to its workforce.
 
 SELECT 
- AVG(costo_lavoro_per_dipendente_2013) AS avg_costo_lavoro_per_dipendente_2013,
- AVG(costo_lavoro_per_dipendente_2014) AS avg_costo_lavoro_per_dipendente_2014,
- AVG(costo_lavoro_per_dipendente_2015) AS avg_costo_lavoro_per_dipendente_2015
-FROM
+  AVG(ricavi_2013/dipendenti_2013) AS avg_ricavi_per_dipendenti_2013,
+  AVG(ricavi_2014/dipendenti_2014) AS avg_ricavi_per_dipendenti_2014,
+  AVG(ricavi_2015/dipendenti_2015) AS avg_ricavi_per_dipendenti_2015
+ FROM
 (SELECT 
- ("Costo lav
-2013" / "Dipendenti
-2013") AS costo_lavoro_per_dipendente_2013,
-  ("Costo lav
-2014"/ "Dipendenti
-2014") AS costo_lavoro_per_dipendente_2014,
-  ("Costo lav
-2015"/"Dipendenti
-2015") AS costo_lavoro_per_dipendente_2015
-FROM 
+  CAST("Ricavi
+2013" AS FLOAT) AS ricavi_2013,
+  CAST("Ricavi
+2014" AS FLOAT) AS ricavi_2014,
+  CAST("Ricavi
+2015" AS FLOAT) AS ricavi_2015,
+  CAST("Dipendenti
+2013" AS FLOAT) AS dipendenti_2013,
+  CAST("Dipendenti
+2014" AS FLOAT) AS dipendenti_2014,
+  CAST("Dipendenti
+2015" AS FLOAT) AS dipendenti_2015
+FROM
   tst)
 
-----Average Labor Cost per Employee 2013 _ €32.973,71
-----Average Labor Cost per Employee 2014 _ €35.049,71
-----Average Labor Cost per Employee 2015 _ €35.995.13
-----The numbers are pretty stable, over the years.
+--Average Labor Cost per Employee 2013 _ €32.974,10
+--Average Labor Cost per Employee 2014 _ €34.154,03
+--Average Labor Cost per Employee 2015 _ €37.482,10
 
---9.Now Added Value per Employee, which measures the average productivity per employee.
+--8. The previous numbers were more favorable, so I decided to check the average Labor Cost per Employee.
+--This metric indicates the average cost per employee, helping to understand how 'expensive' the workforce is for the company.
+
+SELECT 
+  AVG(costo_lavoro_2013/dipendenti_2013) AS avg_costo_lavoro_per_dipendente_2013,
+  AVG(costo_lavoro_2014/dipendenti_2014) AS avg_costo_lavoro_per_dipendente_2014,
+  AVG(costo_lavoro_2015/dipendenti_2015) AS avg_costo_lavoro_per_dipendente_2015
+FROM
+(SELECT 
+  CAST("Costo lav
+2013" AS FLOAT) AS costo_lavoro_2013,
+  CAST("Costo lav
+2013" AS FLOAT) AS costo_lavoro_2014,
+  CAST("Costo lav
+2013" AS FLOAT) AS costo_lavoro_2015,
+  CAST("Dipendenti
+2013" AS FLOAT) AS dipendenti_2013,
+  CAST("Dipendenti
+2014" AS FLOAT) AS dipendenti_2014,
+  CAST("Dipendenti
+2015" AS FLOAT) AS dipendenti_2015
+FROM
+  tst)
+
+--Average Labor Cost per Employee 2013 _ €32.973,71
+--Average Labor Cost per Employee 2014 _ €35.049,71
+--Average Labor Cost per Employee 2015 _ €35.995.13
+--The numbers have been quite consistent over the three years.
+
+--9. I then added Value per Employee, which measures the average productivity per employee.
 
 SELECT 
 AVG(val_2013/dipendenti_2013) AS val_aggiunto_per_dipendenti_2013,
@@ -246,11 +246,11 @@ FROM
 FROM
   tst)
 
-----Average Added Value per Employee 2013 _ €49.825,76 
-----Average Added Value per Employee 2014 _ €50.151,14
-----Average Added Value per Employee 2015 _ €40.359,09
+--Average Added Value per Employee 2013 _ €49.825,76 
+--Average Added Value per Employee 2014 _ €50.151,14
+--Average Added Value per Employee 2015 _ €40.359,09
 
---10.For last, the Operating Profitability, which indicates the percentage of revenue that results in operating profitability.
+--10. Finally, I assessed Operating Profitability, which indicates the percentage of revenue that results in operating profit.
 
 SELECT 
 AVG((mol_2013/ricavi_2013)*100) AS avg_redditivita_operativa_2013,
@@ -273,9 +273,9 @@ FROM
 FROM
   tst)
 
-----Average Operating Profitability 2013 _ 5.84%
-----Average Operating Profitability 2013 _ 4.34%
-----Average Operating Profitability 2013 _ -32.21%
+--Average Operating Profitability 2013 _ 5.84%
+--Average Operating Profitability 2013 _ 4.34%
+--Average Operating Profitability 2013 _ -32.21%
 
 
 
