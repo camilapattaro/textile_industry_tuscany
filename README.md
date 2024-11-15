@@ -2,13 +2,12 @@
 Analysis of financial statements in the textile sector.
 
 ## Introduction
-The data pertains to various financial statements within the textile sector, specifically from Tuscanuy. 
-My objective is to construct financial ratios and subsequently analyze the different indices. This will involve studying the trends and exploring potential correlations between them, ultimately resulting in the creation of a distance matrix that enables the estimation of how far a company is from a reference benchmark.
+As a textile engineer residing in Tuscany and currently transitioning to a career in data analysis, I found this dataset deserving of my attention. It can be found on Kaggle at the following [link](https://www.kaggle.com/datasets/tili1992/textile-industry-tuscany/data) 
+My objective is to construct financial ratios and subsequently analyze the different indices. 
 
 ## Content
-The data set was downloaded from the Kaggle database.
-[Textile Industry - Tuscany](https://www.kaggle.com/datasets/tili1992/textile-industry-tuscany/data) 
-They represent the budget of the years 2013-2014-2015 of all companies in the textile sector present in Tuscany.
+The data refer to some financial statements in the textile sector, in Tuscany.
+Given the size of the dataset, I decided to conduct my analysis using SQL.
 
 ## Cleaning
 Cleaning.sql file.
