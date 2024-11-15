@@ -10,6 +10,12 @@ The data set was downloaded from the Kaggle database.
 [Textile Industry - Tuscany](https://www.kaggle.com/datasets/tili1992/textile-industry-tuscany/data) 
 They represent the budget of the years 2013-2014-2015 of all companies in the textile sector present in Tuscany.
 
+## Cleaning
+Cleaning.sql file.
+
+## Analysing
+Analysing.sql file.
+
 ## Clonclusion:
 The average profitability of all 1,012 companies dropped significantly, from 5.84% in the first year to a negative -32.21% in the third year, indicating that the sector faced considerable challenges.
 The top 10 companies had relatively stable and positive profitability, increasing from 1.48% in the first year to 3.58% in the third year. This suggests that these companies were able to adapt better to market conditions or implement effective strategies to maintain profitability.
