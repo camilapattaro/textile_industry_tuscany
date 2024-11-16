@@ -34,5 +34,5 @@ OR
 2015" < 1
 
 --No negative numbers where found.
---The data is consistent and in the correct format. No further cleaning was necessary.
+--The data is consistent and in the correct format.
 
