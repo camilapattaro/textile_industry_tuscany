@@ -20,8 +20,6 @@ UPDATE
       "Debt Ratio 2015" = (CAST("Debito
   2015" AS FLOAT)/ CAST("Investimenti
   2015" AS FLOAT))
-FROM 
-  tst
 
 SELECT 
   AVG("Debt Ratio 2013"),
